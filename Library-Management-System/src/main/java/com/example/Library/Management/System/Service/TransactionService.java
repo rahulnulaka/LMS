@@ -66,6 +66,9 @@ public class TransactionService {
         transaction.setLibraryCard(libraryCard);
 
 
+        book.getTransactionList().add(transaction);
+        libraryCard.getTransactionList().add(transaction);
+
         transactionRepository.save(transaction);
 
         return "transaction is issued";
