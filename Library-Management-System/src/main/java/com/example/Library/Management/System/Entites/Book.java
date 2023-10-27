@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table
 @Getter
@@ -16,6 +19,7 @@ import lombok.Setter;
 public class Book {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookid;
 
     private String bookname;
@@ -27,8 +31,14 @@ public class Book {
 
     private double rating;
 
+    private boolean available;
+
     @ManyToOne
     @JoinColumn
     private Author author;
+
+
+    @OneToMany(mappedBy = "book",cascade = CascadeType.ALL)
+    List<Transaction> transactionList=new ArrayList<>();
 
 }

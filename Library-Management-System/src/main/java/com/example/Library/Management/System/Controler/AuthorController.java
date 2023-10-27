@@ -26,8 +26,8 @@ public class AuthorController {
     }
 
 
-    @GetMapping("/getId/{id}")
-    public ResponseEntity getauthorbyid(@PathVariable("id") Integer id){
+    @GetMapping("/getId")
+    public ResponseEntity getauthorbyid(@RequestParam("id") Integer id){
         try{
             Author author=authorService.getauthorbyid(id);
             return new ResponseEntity(author,HttpStatus.OK);
